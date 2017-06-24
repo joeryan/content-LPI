@@ -80,7 +80,7 @@ echo ""
 
 echo "Calling the database setup script..."
 echo ""
-sh ./dbsetup.sh
+bash ./dbsetup.sh
 
 if [[ $? == 0 ]]; then
   echo "Writing credentials to a file..." 
