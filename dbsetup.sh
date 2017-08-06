@@ -1,6 +1,8 @@
 #!/bin/bash
 
-mysql --user=root --password=password123 --host=172.17.0.2 -e "CREATE DATABASE dbSample"; &> /dev/null
+export MYSQL_IP=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' $(ls /var/lib/docker/containers))
+
+mysql --user=root --password=password123 --host=$MYSQL_IP -e "CREATE DATABASE dbSample"; &> /dev/null
 
 if [[ $? == 0 ]]; then
   echo "The database called \"dbSample\" has been successfully created."
@@ -14,7 +16,7 @@ fi
 echo "Creating the tables and fields in the database and populating them with sample records..."
 echo ""
 
-mysql --user=root --password=password123 --host=172.17.0.2 < createscript.sql &> /dev/null
+mysql --user=root --password=password123 --host=$MYSQL_IP < createscript.sql &> /dev/null
 
 if [[ $? == 0 ]]; then
   echo "The database called \"dbSample\" has been successfully updated with tables and records."
