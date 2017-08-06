@@ -67,7 +67,10 @@ fi
 
 echo "Creating the database within the container for our lab..."
 echo ""
-echo "We need to give the database time to start, pausing for 30 seconds..."
+echo "We need to give the database time to start, pausing for 40 seconds..."
+echo ""
+sleep 10
+echo "30 seconds..."
 echo ""
 sleep 10
 echo "20 seconds..."
