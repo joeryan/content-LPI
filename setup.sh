@@ -8,7 +8,8 @@ sleep 3
 echo "This install will take a few moments, please stand by..."
 echo ""
 
-yum install -y mysql docker &> /dev/null
+yum install -y epel-release &> /dev/null
+yum install -y mysql docker-io &> /dev/null
 
 if [[ $? == 0 ]]; then
   echo "Installation is complete."
@@ -22,7 +23,7 @@ fi
 echo "Attempting to start the Docker service..."
 echo ""
 
-systemctl start docker &> /dev/null
+service docker start &> /dev/null
 
 if [[ $? == 0 ]]; then
   echo "The Docker service is started."
