@@ -86,14 +86,14 @@ bash ./dbsetup.sh
 if [[ $? == 0 ]]; then
   echo "Writing credentials to a file..." 
   echo ""
-  echo "Database IP Address: 172.17.0.2" > /root/creds.txt
+  echo "Database IP Address: $(docker inspect -f '{{ .NetworkSettings.IPAddress }}' $(ls /var/lib/docker/containers))" > /root/creds.txt
   echo "Database User: root" >> /root/creds.txt
   echo "Database Password: password123" >> /root/creds.txt
 
   echo "===================================================================================="
   echo ""
   echo "The installation and setup of your lab environment is complete. Information you need to proceed:"
-  echo "Database IP Address: 172.17.0.2"
+  echo "Database IP Address: $(docker inspect -f '{{ .NetworkSettings.IPAddress }}' $(ls /var/lib/docker/containers))"
   echo "Database User: root"
   echo "Database Password: password123"
   echo ""
